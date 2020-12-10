@@ -1,0 +1,20 @@
+{
+  "name": "twilio-speech-translation-watson",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "twilio-run",
+    "deploy": "twilio-run deploy"
+  },
+  "dependencies": {
+    "ibm-watson": "^5.7.1",
+    "twilio": "^3.54.0"
+  },
+  "devDependencies": {
+    "twilio-run": "^2.6.0"
+  },
+  "engines": {
+    "node": "10"
+  }
+}
