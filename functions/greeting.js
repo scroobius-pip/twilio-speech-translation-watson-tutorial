@@ -1,14 +1,25 @@
 const VoiceResponse = require('twilio').twiml.VoiceResponse
 
+const voiceConfig = {
+    voice: "Polly.Amy-Neural"
+}
+
+const supportedLanguages = ['german', 'french', 'japanese']
+
 exports.handler = function (context, event, callback) {
     const twiml = new VoiceResponse();
 
-    twiml
+    const gather = twiml
         .gather({
-            input: ['speech'],
+            finishOnKey: '',
             action: '/handle-language'
         })
-        .say("What language do you want to translate to ?")
+
+    gather.say(voiceConfig, "What language do you want to translate to ?")
+
+    supportedLanguages.forEach((language, index) => {
+        gather.say(voiceConfig, `Select ${index + 1} to translate to ${language}`)
+    })
 
     callback(null, twiml);
 };
